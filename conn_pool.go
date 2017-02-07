@@ -26,7 +26,7 @@ type ConnPool struct {
 	MaxIdle  int32
 	Cnt      int64
 
-	New          func(name string) (NConn, error)
+	New func(name string) (NConn, error)
 
 	active int32
 	free   []NConn

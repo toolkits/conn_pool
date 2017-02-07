@@ -1,10 +1,7 @@
 package rpc_conn_pool
 
 import (
-	"net"
 	"net/rpc"
-	"sync"
-	"time"
 )
 
 // RpcCient, 要实现io.Closer接口
@@ -32,4 +29,8 @@ func (this RpcClient) Close() error {
 
 func (this RpcClient) Call(method string, args interface{}, reply interface{}) error {
 	return this.cli.Call(method, args, reply)
+}
+
+func NewRpcClient(cli *rpc.Client, name string) *RpcClient {
+	return &RpcClient{cli: cli, name: name}
 }
