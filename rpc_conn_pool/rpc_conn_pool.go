@@ -34,3 +34,10 @@ func (this RpcClient) Call(method string, args interface{}, reply interface{}) e
 func NewRpcClient(cli *rpc.Client, name string) *RpcClient {
 	return &RpcClient{cli: cli, name: name}
 }
+
+func NewRpcClientWithCodec(codec rpc.ClientCodec, name string) *RpcClient {
+	return &RpcClient{
+		cli:  rpc.NewClientWithCodec(codec),
+		name: name,
+	}
+}
